@@ -1,0 +1,29 @@
+name: flutter_starter
+description: Flutter Architecture Starter — Hello World
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  dio: ^5.4.0
+  reactive_forms: ^17.0.0
+  device_preview: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  mocktail: ^1.0.4
+  riverpod_lint: ^2.3.10
+  custom_lint: ^0.6.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/shared/locales/en.json
+    - lib/shared/locales/id.json
