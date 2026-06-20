@@ -89,7 +89,7 @@ dart format --set-exit-if-changed .
 
 ## Arsitektur
 
-Lihat [CLAUDE.md](CLAUDE.md) untuk dokumentasi lengkap arsitektur, konvensi penamaan, dan aturan per layer.
+Lihat [CODE.md](CODE.md) untuk dokumentasi lengkap arsitektur, konvensi penamaan, dan aturan per layer.
 
 ```
 lib/features/{nama_fitur}/
