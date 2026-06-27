@@ -60,4 +60,5 @@ android/app/google-services.json
 secrets.json
 credentials.json
 service-account*.json
-.qodo
+.qodo.vscode
+.claude
