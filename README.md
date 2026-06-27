@@ -1,110 +1,221 @@
 # Flutter Starter
 
-Template arsitektur Flutter siap pakai dengan Riverpod v2, Dio, dan Reactive Forms.
+Production-ready template for building cross-platform mobile applications with Flutter, Dart, Riverpod v2, Dio HTTP Client, and Reactive Forms.
 
-## Prasyarat
+## 🎯 Overview
 
-| Tool | Versi |
-|------|-------|
-| Flutter | `stable` (via FVM) |
-| Dart | `>=3.0.0` |
-| FVM | [Install FVM](https://fvm.app/documentation/getting-started/installation) |
+**Flutter Starter** is a comprehensive mobile app template that implements modern architecture and best practices:
+- **Framework**: Flutter with Dart for cross-platform development (iOS, Android, Web, macOS)
+- **State Management**: Riverpod v2 for reactive and efficient state management
+- **HTTP Client**: Dio for robust and interceptor-based API communication
+- **Forms**: Reactive Forms for reactive form handling with validation
+- **Preview**: Device Preview built-in for testing across multiple screen sizes
+- **Analysis**: Comprehensive linting and code analysis tools
 
-## Cara Clone & Run
+Use this starter for:
+- Cross-platform mobile applications
+- Rapid prototyping and MVP development
+- Teams wanting Flutter best practices built-in
 
-### 1. Clone repository
+---
+
+## 📚 Tech Stack
+
+| Concern | Package |
+|---------|---------|
+| Framework | Flutter (stable) |
+| Language | Dart >=3.0.0 |
+| State Management | flutter_riverpod ^2.5.1 |
+| HTTP Client | dio ^5.4.0 |
+| Forms | reactive_forms ^17.0.0 |
+| Device Preview | device_preview ^1.1.0 |
+| Version Manager | FVM (Flutter Version Management) |
+
+---
+
+## 📋 Prerequisites
+
+- **Flutter**: Latest stable version (via FVM recommended)
+- **Dart**: >=3.0.0
+- **FVM**: [Install FVM](https://fvm.app/documentation/getting-started/installation)
+- **Xcode**: v14+ (for iOS development)
+- **Android Studio**: Latest (for Android development)
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone Repository
 
 ```bash
-git clone <url-repository>
+git clone <repository-url>
 cd flutter-starter
 ```
 
-### 2. Install Flutter versi yang benar (via FVM)
+### 2. Install & Configure Flutter (via FVM)
+
+Recommended approach using FVM for version management:
 
 ```bash
 fvm install
 fvm use stable
 ```
 
-> Tanpa FVM, pastikan Flutter versi `stable` sudah terinstall dan ada di PATH.
-
-### 3. Install dependencies
+Without FVM, ensure Flutter stable version is installed:
 
 ```bash
-flutter pub get
+flutter --version
 ```
 
-atau jika menggunakan FVM:
+### 3. Install Dependencies
+
+With FVM:
 
 ```bash
 fvm flutter pub get
 ```
 
-### 4. Set environment variable
+Without FVM:
 
-Project ini menggunakan `API_BASE_URL` sebagai base URL untuk semua HTTP request.
+```bash
+flutter pub get
+```
 
-Jalankan dengan flag `--dart-define`:
+### 4. Set Environment Variable
+
+The application uses `API_BASE_URL` for all HTTP requests.
+
+Run with the `--dart-define` flag:
 
 ```bash
 flutter run --dart-define=API_BASE_URL=https://api.example.com
 ```
 
-> Tanpa flag ini, `API_BASE_URL` akan kosong dan semua request API akan gagal.
+**Note**: Without this flag, all API requests will fail due to empty `API_BASE_URL`.
 
-### 5. Jalankan aplikasi
+### 5. Run Application
+
+#### Web (with Device Preview)
 
 ```bash
-# Web (dengan device preview)
 flutter run -d chrome --dart-define=API_BASE_URL=https://api.example.com
+```
 
-# macOS
+#### macOS
+
+```bash
 flutter run -d macos --dart-define=API_BASE_URL=https://api.example.com
+```
 
-# Android (emulator/device)
+#### Android (emulator or device)
+
+```bash
 flutter run -d android --dart-define=API_BASE_URL=https://api.example.com
+```
 
-# iOS (simulator/device)
+#### iOS (simulator or device)
+
+```bash
 flutter run -d ios --dart-define=API_BASE_URL=https://api.example.com
 ```
 
-## Device Preview
+---
 
-Project ini sudah dilengkapi [device_preview](https://pub.dev/packages/device_preview). Saat menjalankan di mode non-release, panel preview otomatis muncul — pilih device dari dropdown untuk melihat tampilan di berbagai ukuran layar.
+## 📁 Project Structure
 
-Device Preview **otomatis dinonaktifkan** saat build release.
+```
+lib/
+├── features/
+│   └── {featureName}/
+│       ├── types/         # Data models & state shape
+│       ├── states/        # Riverpod Notifier (client state)
+│       ├── services/      # HTTP calls via DioClient
+│       ├── controllers/   # AsyncNotifier (async logic)
+│       └── widgets/       # UI layer (screens & components)
+├── shared/
+│   ├── services/         # Shared services (DioClient, etc)
+│   ├── widgets/          # Reusable UI widgets
+│   ├── utils/            # Helper functions
+│   └── constants/        # App constants
+└── main.dart             # App entry point
+```
 
-## Menjalankan Tests
+---
+
+## 💻 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `flutter pub get` | Install dependencies |
+| `flutter run` | Run app (device preview) |
+| `flutter test` | Run unit & widget tests |
+| `dart analyze --fatal-infos` | Static analysis |
+| `dart format --set-exit-if-changed .` | Code formatting |
+| `flutter build web` | Build for web |
+| `flutter build ios` | Build for iOS |
+| `flutter build android` | Build for Android |
+
+---
+
+## 🎨 Device Preview
+
+The application includes [device_preview](https://pub.dev/packages/device_preview) package for multi-device testing.
+
+When running in non-release mode, a preview panel automatically appears — select different devices from the dropdown to see how your app looks across various screen sizes.
+
+**Note**: Device Preview is automatically disabled for release builds.
+
+---
+
+## 🧪 Testing
+
+### Run Unit & Widget Tests
 
 ```bash
 flutter test
 ```
 
-## Analisis Kode
+### Code Analysis & Formatting
 
 ```bash
+# Static analysis
 dart analyze --fatal-infos
+
+# Format code
 dart format --set-exit-if-changed .
 ```
 
-## Arsitektur
+---
 
-Lihat [CODE.md](CODE.md) untuk dokumentasi lengkap arsitektur, konvensi penamaan, dan aturan per layer.
+## 🏗️ Architecture Guide
 
-```
-lib/features/{nama_fitur}/
-├── types/        # Data models & state shape
-├── states/       # Riverpod Notifier (client state)
-├── services/     # HTTP calls via DioClient
-├── controllers/  # AsyncNotifier (async logic)
-└── widgets/      # UI layer
-```
+Complete documentation for architecture, naming conventions, and best practices is available in [CODE.md](./CODE.md).
 
-## Tech Stack
+**Key Topics:**
+- Naming conventions (functions, files, folders)
+- Layer structure (Types, States, Services, Controllers, Widgets)
+- Riverpod provider patterns
+- Dio HTTP client usage
+- Reactive Forms implementation
+- Widget composition best practices
+- State management patterns
 
-| Concern | Package |
-|---------|---------|
-| State Management | `flutter_riverpod ^2.5.1` |
-| HTTP Client | `dio ^5.4.0` |
-| Forms | `reactive_forms ^17.0.0` |
-| Dev Preview | `device_preview ^1.1.0` |
+---
+
+## 🤝 Contributing
+
+1. Fork this repository
+2. Create a feature branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'feat: add your feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](./LICENSE) file for details.
+
+---
+
+Developed by Dzikri Alan's Team
