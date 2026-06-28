@@ -63,3 +63,4 @@ service-account*.json
 .qodo.vscode
 .claude
 .blayer
+.vscode
